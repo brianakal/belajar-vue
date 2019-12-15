@@ -1,0 +1,34 @@
+npx sequelize model:generate \
+--name master_jabatan \
+--attributes kode_jabatan:INTEGER,nama_jabatan:STRING,nilai_jabatan:INTEGER,id_type_jabatan:INTEGER,nama_pendek_jabatan:STRING,kode_unit:INTEGER,status_aktif_jabatan:INTEGER,tanggal_jabatan_mulai:DATE,tanggal_jabatan_selesai:DATE,kode_jenis_jabatan:STRING,created_by:DATE,created_date:DATE,modified_by:DATE,modified_date:DATE \
+--underscored
+
+npx sequelize model:generate \
+--name master_personil \
+--attributes npp:STRING,nama_lengkap:STRING,nama_panggil:STRING,tempat_lahir:STRING,tanggal_lahir:DATE,kode_unit:INTEGER,kode_lokasi_unit:INTEGER,kode_tugas_unit:INTEGER,kode_jabatan:INTEGER,kode_eselon:STRING,kode_jenis_jabatan:STRING,kode_status_pegawai:INTEGER,kode_status_karya_siswa:INTEGER,kode_status_aktif:INTEGER,kode_lokasi_tugas:STRING,jenis_kelamin:STRING,golongan_darah:STRING,agama:STRING,tanggal_pensiun:DATE,email_intranet:STRING,kabupaten_kota:STRING,email_internet:STRING,email_lain:STRING,foto_pegawai:STRING,created_date:DATE,modified_date:DATE \
+--underscored
+
+npx sequelize model:generate \
+--name master_status_aktiv \
+--attributes kode_status_aktif:INTEGER,nama_status_aktif:STRING \
+--underscored
+
+npx sequelize model:generate \
+--name master_type_jabatan \
+--attributes id_type_jabatan:INTEGER,nama_type_jabatan_s:STRING,nama_type_jabatan_f:STRING,kode_eselon:STRING \
+--underscored
+
+npx sequelize model:generate \
+--name master_unit \
+--attributes kode_unit:INTEGER,id_type_unit:INTEGER,nama_unit:STRING,parent_unit:INTEGER,initial_unit:STRING,cost_center:STRING,kode_operasional:STRING,kode_master_jenis_shift:STRING,unit_direktorat:STRING,status_aktif_unit:INTEGER \
+--underscored
+
+npx sequelize model:generate \
+--name tabel_role_group \
+--attributes id_role_group:INTEGER,akses_group:STRING \
+--underscored
+
+npx sequelize model:generate \
+--name tabel_user \
+--attributes npp:STRING,password:STRING,group_akses:INTEGER,created_date:DATE,created_by:DATE,modified_date:DATE,modified_by:STRING,active:INTEGER,kode_lokasi_tugas:STRING \
+--underscored
