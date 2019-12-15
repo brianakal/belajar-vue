@@ -5,13 +5,21 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     group_akses: DataTypes.INTEGER,
     created_date: DataTypes.DATE,
-    created_by: DataTypes.DATE,
+    created_by: DataTypes.STRING,
     modified_date: DataTypes.DATE,
     modified_by: DataTypes.STRING,
     active: DataTypes.INTEGER,
     kode_lokasi_tugas: DataTypes.STRING
   }, {
     underscored: true,
+    // don't add the timestamp attributes (updatedAt, createdAt)
+    timestamps: false,
+    // disable the modification of tablenames; By default, sequelize will automatically
+    // transform all passed model names (first parameter of define) into plural.
+    // if you don't want that, set the following
+    freezeTableName: true,
+    // define the table's name
+    tableName: 'master_jabatan'
   });
   tabel_user.associate = function(models) {
     // associations can be defined here

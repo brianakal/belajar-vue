@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('master_personils', {
+    return queryInterface.createTable('master_personil', {
       npp: {
         type: Sequelize.STRING,
         primaryKey: true,
@@ -16,7 +16,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       tanggal_lahir: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
       kode_unit: {
         type: Sequelize.INTEGER
@@ -58,7 +58,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       tanggal_pensiun: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
       email_intranet: {
         type: Sequelize.STRING
@@ -79,12 +79,6 @@ module.exports = {
         type: Sequelize.DATE
       },
       modified_date: {
-        type: Sequelize.DATE
-      },
-      created_at: {
-        type: Sequelize.DATE
-      },
-      updated_at: {
         type: Sequelize.DATE
       }
     });

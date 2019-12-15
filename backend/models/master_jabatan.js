@@ -8,15 +8,17 @@ module.exports = (sequelize, DataTypes) => {
     nama_pendek_jabatan: DataTypes.STRING,
     kode_unit: DataTypes.INTEGER,
     status_aktif_jabatan: DataTypes.INTEGER,
-    tanggal_jabatan_mulai: DataTypes.DATE,
-    tanggal_jabatan_selesai: DataTypes.DATE,
+    tanggal_jabatan_mulai: DataTypes.DATEONLY,
+    tanggal_jabatan_selesai: DataTypes.DATEONLY,
     kode_jenis_jabatan: DataTypes.STRING,
-    created_by: DataTypes.DATE,
+    created_by: DataTypes.STRING,
     created_date: DataTypes.DATE,
-    modified_by: DataTypes.DATE,
+    modified_by: DataTypes.STRING,
     modified_date: DataTypes.DATE
   }, {
     underscored: true,
+    // don't add the timestamp attributes (updatedAt, createdAt)
+    timestamps: false,
     // disable the modification of tablenames; By default, sequelize will automatically
     // transform all passed model names (first parameter of define) into plural.
     // if you don't want that, set the following

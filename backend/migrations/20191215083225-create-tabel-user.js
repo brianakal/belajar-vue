@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('tabel_users', {
+    return queryInterface.createTable('tabel_user', {
       npp: {
         allowNull: false,
         primaryKey: true,
@@ -17,7 +17,7 @@ module.exports = {
         type: Sequelize.DATE
       },
       created_by: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       modified_date: {
         type: Sequelize.DATE
@@ -30,12 +30,6 @@ module.exports = {
       },
       kode_lokasi_tugas: {
         type: Sequelize.STRING
-      },
-      created_at: {
-        type: Sequelize.DATE
-      },
-      updated_at: {
-        type: Sequelize.DATE
       }
     });
   },

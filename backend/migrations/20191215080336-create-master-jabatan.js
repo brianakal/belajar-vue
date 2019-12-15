@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('master_jabatans', {
+    return queryInterface.createTable('master_jabatan', {
       kode_jabatan: {
         allowNull: false,
         autoIncrement: true,
@@ -27,30 +27,24 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       tanggal_jabatan_mulai: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
       tanggal_jabatan_selesai: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
       kode_jenis_jabatan: {
         type: Sequelize.STRING
       },
       created_by: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       created_date: {
         type: Sequelize.DATE
       },
       modified_by: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       modified_date: {
-        type: Sequelize.DATE
-      },
-      created_at: {
-        type: Sequelize.DATE
-      },
-      updated_at: {
         type: Sequelize.DATE
       }
     });

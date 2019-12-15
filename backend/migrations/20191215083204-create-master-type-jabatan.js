@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('master_type_jabatans', {
+    return queryInterface.createTable('master_type_jabatan', {
       id_type_jabatan: {
         allowNull: false,
         autoIncrement: true,
@@ -16,12 +16,6 @@ module.exports = {
       },
       kode_eselon: {
         type: Sequelize.STRING
-      },
-      created_at: {
-        type: Sequelize.DATE
-      },
-      updated_at: {
-        type: Sequelize.DATE
       }
     });
   },

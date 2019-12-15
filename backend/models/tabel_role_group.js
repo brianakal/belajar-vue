@@ -5,6 +5,14 @@ module.exports = (sequelize, DataTypes) => {
     akses_group: DataTypes.STRING
   }, {
     underscored: true,
+    // don't add the timestamp attributes (updatedAt, createdAt)
+    timestamps: false,
+    // disable the modification of tablenames; By default, sequelize will automatically
+    // transform all passed model names (first parameter of define) into plural.
+    // if you don't want that, set the following
+    freezeTableName: true,
+    // define the table's name
+    tableName: 'master_jabatan'
   });
   tabel_role_group.associate = function(models) {
     // associations can be defined here

@@ -13,6 +13,14 @@ module.exports = (sequelize, DataTypes) => {
     status_aktif_unit: DataTypes.INTEGER
   }, {
     underscored: true,
+    // don't add the timestamp attributes (updatedAt, createdAt)
+    timestamps: false,
+    // disable the modification of tablenames; By default, sequelize will automatically
+    // transform all passed model names (first parameter of define) into plural.
+    // if you don't want that, set the following
+    freezeTableName: true,
+    // define the table's name
+    tableName: 'master_jabatan'
   });
   master_unit.associate = function(models) {
     // associations can be defined here

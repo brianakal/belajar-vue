@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('master_units', {
+    return queryInterface.createTable('master_unit', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -37,12 +37,6 @@ module.exports = {
       },
       status_aktif_unit: {
         type: Sequelize.INTEGER
-      },
-      created_at: {
-        type: Sequelize.DATE
-      },
-      updated_at: {
-        type: Sequelize.DATE
       }
     });
   },
