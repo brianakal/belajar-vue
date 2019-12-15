@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     // if you don't want that, set the following
     freezeTableName: true,
     // define the table's name
-    tableName: 'master_jabatan'
+    tableName: 'master_personil'
   });
   master_personil.associate = function(models) {
     // associations can be defined here

@@ -2,13 +2,10 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('master_unit', {
-      id: {
+      kode_unit: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      kode_unit: {
         type: Sequelize.INTEGER
       },
       id_type_unit: {
