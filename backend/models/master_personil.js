@@ -1,7 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const master_personil = sequelize.define('master_personil', {
-    npp: DataTypes.STRING,
+    npp: {
+      type: DataTypes.STRING,
+      primaryKey: true
+    },
     nama_lengkap: DataTypes.STRING,
     nama_panggil: DataTypes.STRING,
     tempat_lahir: DataTypes.STRING,
@@ -38,6 +41,7 @@ module.exports = (sequelize, DataTypes) => {
     // define the table's name
     tableName: 'master_personil'
   });
+  master_personil.removeAttribute('id')
   master_personil.associate = function(models) {
     // associations can be defined here
   };

@@ -1,320 +1,85 @@
-# Panduan Penggunaan Git
+# Cara Menggunakan Git
 
-* [Mengunduh repository ke dalam komputer](http://https://github.com/datascienceid/README#mengunduh-repository)
-* [Memperbarui repository yang telah diunduh](https://github.com/datascienceid/README#memperbarui-repository)
-* [Mengunggah perubahan ke dalam repository](https://github.com/datascienceid/README#mengunggah-perubahan)
-* [Menghapus file](https://github.com/datascienceid/README#menghapus-file)
-* [Branching](https://github.com/datascienceid/README#branching)
-* [Perintah tambahan](https://github.com/datascienceid/README#perintah-tambahan)
-* [gitignore](https://github.com/datascienceid/README#gitignore)
+Git adalah contoh *distributed version control system (DVCS)* yang digunakan developer untuk saling kerja sama. Dengan git kamu bisa meninjau sejarah sebuah proyek untuk mendapatkan informasi seperti:
 
-## Mengunduh Repository
+- Apa saja yang telah berubah?
+- Siapa yang telah mengubah?
+- Kapan perubahan itu terjadi?
+- Mengapa perubahan itu dibutuhkan?
 
-Unduh repository ke dalam komputer menggunakan perintah `git clone`. Url
-repository dapat dilihat di dalam repository yang diinginkan.
+Dan dengan sistem yang terdistribusi ini, kamu tidak harus terkoneksi ke repositori sentral. Kamu juga bisa bekerja di mana saja dan kapan saja secara asinkron. 
 
-```
-git clone <url repository> <folder tujuan>
-```
-
-#### Contoh
-
-```
-user@host:~$ git clone https://github.com/datascienceid/instagram.git instagram
-Cloning into 'instagram'...
-remote: Counting objects: 4, done.
-remote: Compressing objects: 100% (4/4), done.
-remote: Total 4 (delta 0), reused 4 (delta 0), pack-reused 0
-Unpacking objects: 100% (4/4), done.
-```
-
-## Memperbarui Repository
-
-Perbarui repository yang telah diunduh ke dalam komputer menggunakan perintah
-`git pull`.
-
-```
-git pull origin <nama branch>
-```
-
-#### Contoh
-
-```
-git pull https://github.com/datascienceid/instagram.git master
-From https://github.com/datascienceid/instagram
- * branch            master     -> FETCH_HEAD
-Already up-to-date.
-```
-
-## Mengunggah Perubahan
-
-Jangan lupa untuk melakukan pull terlebih dahulu sebelum melakukan push.
-
-**Tambah file baru atau ubah file**
-
-```
-git add <nama file>
-```
-
-**Konfirmasi penambahan atau perubahan file**
-
-```
-git commit -m "<pesan commit>"
-```
-
-**Kirim perubahan ke dalam repository**
-
-```
-git push origin <nama branch>
-```
-
-#### Contoh
-
-```
-user@host:~$ git add README.md
-
-user@host:~$ git commit -m "Menambahkan readme"
-[master 224c510] Menambahkan readme
- 1 file changed, 1 insertion(+)
- create mode 100644 README.md
-
-user@host~$ git push origin master
-Counting objects: 3, done.
-Delta compression using up to 16 threads.
-Compressing objects: 100% (2/2), done.
-Writing objects: 100% (2/2), 271 bytes | 0 bytes/s, done.
-Total 2 (delta 1), reused 0 (delta 0)
-remote: Resolving deltas: 100% (1/1), completed with 1 local objects.
-To https://github.com/datascienceid/instagram.git
-   fec3a1f..224c510  master -> master
-```
-
-## Menghapus File
-
-Hapus file dari repository menggunakan perintah `git rm`, diikuti dengan `git commit`, dan `git push`.
-
-```
-git rm <nama file>
-```
-
-#### Contoh
-
-```
-user@host~$ git rm README.md
-rm 'README.md'
-
-user@host~$ git commit -m
-[master 658a76e] Menghapus README
- 1 file changed, 1 deletion(-)
- delete mode 100644 README.md
-
-user@host~$
-Counting objects: 3, done.
-Delta compression using up to 16 threads.
-Compressing objects: 100% (2/2), done.
-Writing objects: 100% (2/2), 236 bytes | 0 bytes/s, done.
-Total 2 (delta 1), reused 0 (delta 0)
-remote: Resolving deltas: 100% (1/1), completed with 1 local objects.
-To https://github.com/datascienceid.git
-   224c510..658a76e  master -> master
-```
-
-## Branching
-
-Branch digunakan untuk mengembangkan fitur baru atau mengubah source code tanpa
-memberikan dampak kepada branch lain. Branch master adalah branch default dari
-sebuah repository. Gunakan branch lain untuk melakukan pengembangan dan
-gabungkan kembali ke dalam branch master.
-
-### Melihat branch yang terdapat di dalam repository lokal
-
-```
-git branch
-```
-
-```
-user@host~$ git branch
-* master
-```
-
-Tanda asterisk (\*) menandakan branch yang sedang aktif.
-
-### Melihat branch yang terdapat di dalam repository lokal
-
-```
-git branch -r
-```
-
-```
-user@host~$ git branch -r
-  origin/HEAD -> origin/master
-  origin/master
-```
-
-### Membuat branch baru di dalam repository lokal dan kirim ke repository remote
-
-**Buat branch baru**
+> **Catatan:**  
+> Repositori adalah sebuah proyek yang berisi sejumlah file dan folder.  
+> Asinkron artinya bisa dikerjakan tanpa menunggu proses lain selesai.
 
-```
-git branch <nama branch baru>
-```
-
-**Aktifkan branch baru**
-
-```
-git checkout <nama branch baru>
-```
-
-**Konfirmasi perubahan**
-
-```
-git commit -m "<pesan konfirmasi>"
-```
-
-**Unggah branch baru ke dalam repository remote**
-
-```
-git push origin <nama branch baru>
-```
-
-#### Contoh
-
-```
-user@host~$ git branch development
-
-user@host~$ git checkout development
-Switched to branch 'development'
-
-user@host~$ git commit -m "Menambah branch development"
-On branch development
-nothing to commit, working tree clean
-
-user@host~$ git push origin development
-Total 0 (delta 0), reused 0 (delta 0)
-remote:
-remote: Create pull request for new:
-remote:   https://github.com/datascienceid/instagram/pull-requests/new?source=new&t=1
-remote:
-To https://github.com/datascienceid/instagram.git
- * [new branch]      development -> development
-```
-
-### Menambahkan branch dari repository remote ke dalam repository lokal
-
-```
-git branch <nama branch remote>
-git pull origin <nama branch remote>
-git checkout <nama branch remote>
-```
-
-#### Contoh
-
-```
-user@host~$ git branch development
-
-user@host~$ git pull origin development
- * branch            new        -> FETCH_HEAD
- * [new branch]      new        -> origin/development
-Already up-to-date.
-
-user@host~$ git checkout development
-Switched to branch 'development'
-```
-
-### Menggabungkan branch lain ke dalam branch aktif
+Berikut ini adalah panduan singkat mengenai cara penggunaan git:
 
-**Aktifkan branch yang diinginkan**
+- [Cara Install git](#cara-install-git)
+- [Perintah dasar git](#perintah-dasar-git)
+- [Buat Account di Github.com](#buat-account-di-githubcom)
+- [Contoh penggunaan git](#contoh-penggunaan-git)
 
+## Cara install git
+Dengan asumsi kamu sudah [install ubuntu](../linux/readme.md), berikut ini adalah cara install git:
+```terminal
+$ sudo apt install git -y
 ```
-git checkout <nama branch aktif>
-```
-
-**Perbarui branch local**
-
-```
-git pull origin <nama branch aktif>
-```
-
-**Penggabungan**
-
-```
-git merge <nama branch yang akan digabungkan>
-```
-
-**Cek dan selesaikan konflik akibat penggabungan branch**
-
-```
-git status
-```
-
-**Konfirmasi dan unggah penggabungan branch**
-
-```
-git commit -m "<pesan konfirmasi>" -a
-git push origin <nama branch aktif>
-```
-
-#### Menghapus branch
 
-**Pada repository remote**
+## Perintah dasar git
+   
+Berikut ini adalah perintah-perintah dasar yang akan sering kamu gunakan.
 
-```
-git push origin :<nama branch>
-```
+| Perintah   | Digunakan untuk   |
+|------------|-------------------|
+|`git init`  | inisialisasi proyek. membuat hidden subfolder bernama `.git` <br>berisi struktur data yg diperlukan *version control* |
+|`git clone` | membuat salinan lokal proyek yang sudah dibuat secara remote. |
+|`git add`   | menambahkan file ke tahap staging (persiapan sebelum langkah berikutnya). |
+|`git commit`| menyimpan snapshot (perubahan terakhir yg sudah ter-staging) ke dalam history.|
+|`git status`| menampilkan status perubahan: untracked, modified, atau staged.|
+|`git branch`| menampilkan branches (cabang-cabang) yang sedang dikerjakan secara lokal.|
+|`git merge` | menggabungkan dua branch yang berbeda jadi satu. |
+|`git pull`  | memperbarui repositori lokal dengan versi remote paling baru. |
+|`git push`  | memperbarui repositori remote dengan versi lokal paling baru. |
 
-**Pada repository lokal**
+Daftar perintah lain bisa kamu akses di sini: [https://git-scm.com/docs](https://git-scm.com/docs).   
 
-```
-git branch <nama branch> -d
-```
+## Buat Account di Github.com
+- Account Github nanti akan kamu pakai untuk sharing code & acuan deployment ke server.
+- Isi dan proses intruksi halaman ini: [https://github.com/join](https://github.com/join)
 
-## Perintah tambahan
 
-Dapatkan status dari repository
+## Contoh penggunaan git
 
+Buat direktori dan inisialisasi proyek git.
+```terminal
+$ git init my-repo
 ```
-git status
-```
-
-Dapatkan log dari sebuah repository
-
+Masuk ke dalam direktori.
+```terminal
+$ cd my-repo
 ```
-git log
+Buat file di dalam repositori.
+```terminal
+$ touch README.md
 ```
-
-## gitignore
-Ada kalanya kita melihat file gitignore di suatu repository. Apakah itu gitignore? gitignore adalah file yang berisi instruksi kepada git repository untuk tidak men-track files tertentu. Ini sangat berguna untuk meng-exclude files yang mungkin tidak berguna atau tidak perlu di push ke repository. Contoh: .DS_Store di Mac, binary files, `__pycache__`, etc. 
-
-File gitignore dimulai dengan titik (`.`) di Unix-based system (Mac dan Linux) untuk menandakan dia adalah hidden file. Di Windows, buat file gitignore dengan memberi nama `.gitignore.`.
-
-#### Contoh
-
-Untrack file tertentu
+Tambahkan file tsb ke area staging.
+```terminal
+$ git add README.md
 ```
-# tagar digunakan untuk commenting
-# Mac
-.DS_Store
-
-# Spreadsheet
-*.xls
-*.xlsx
-
-# Compressed file
-*.zip
-*.rar
-*.gz
+Commit area staging.
+```terminal
+$ git commit -m "add README to initial commit"
 ```
-
-Untrack folder tertentu
+Tambahkan url repositori yang telah kamu buat. Jika belum membuatnya, ikuti panduannya di sini: [Create a Repository](https://guides.github.com/activities/hello-world/#repository)
+```terminal
+$ git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
 ```
-# tagar digunakan untuk commenting
-# python
-__pycache__/
-
-# virtual environment
-env/
-venv/
+Push perubahan ke github.
+```terminal
+$ git push --set-upstream origin master
 ```
 
-Contoh koleksi gitignore yang berguna  
-https://github.com/github/gitignore
+## Selanjutnya
+- Penjelasan lebih detail dan contoh penggunaan git yg lain bisa kamu temukan di sini: [git-handbook](https://guides.github.com/introduction/git-handbook/#github)
+- Versi video bisa kamu ikuti di sini: [Git and GitHub with Briana Swift](https://www.youtube.com/watch?v=47E-jcuQz5c&index=1&list=PLg7s6cbtAD17Gw5u8644bgKhgRLiJXdX4).

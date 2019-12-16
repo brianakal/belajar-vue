@@ -29,7 +29,10 @@ router.get ('/', (req, res, next) => {
   // penulisan menggunakan async await  
 router.get('/', async (req, res, next) => {
   const result = await Personil.findAll({
-      attributes: {exclude: ['id']}
+      // attributes: {exclude: ['id']}
+  })
+  .catch ( error => {
+    res.status( 400 ).send(error)
   })
   res.json(result)
 });
