@@ -36,6 +36,8 @@ router.get('/', async (req, res, next) => {
   })
   res.json(result)
 });
+
+
 /* 
 router.get( '/user', ( req, res, next ) => {
   models.User.findAll()
