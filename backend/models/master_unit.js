@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     // define the table's name
     tableName: 'master_unit'
   });
+  master_unit.removeAttribute('id')
   master_unit.associate = function(models) {
     // associations can be defined here
   };

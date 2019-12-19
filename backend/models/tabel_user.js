@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     // define the table's name
     tableName: 'tabel_user'
   });
+  tabel_user.removeAttribute('id')
   tabel_user.associate = function(models) {
     // associations can be defined here
   };

@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     // define the table's name
     tableName: 'tabel_role_group'
   });
+  tabel_role_group.removeAttribute('id')
   tabel_role_group.associate = function(models) {
     // associations can be defined here
   };
